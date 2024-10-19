@@ -789,9 +789,11 @@ function showInfoPopup(object) {
   }
 
   // Format properties into a string
-  const propertiesString = Object.entries(data.properties)
-    .map(([key, value]) => `<strong>${key}:</strong> ${value}`)
-    .join('<br>');
+  const propertiesString = typeof data.properties === 'string' 
+    ? data.properties 
+    : Object.entries(data.properties)
+        .map(([key, value]) => `<strong>${key}:</strong> ${value}`)
+        .join('<br>');
 
   infoPopup.innerHTML = `
     <h2>${data.name}</h2>
